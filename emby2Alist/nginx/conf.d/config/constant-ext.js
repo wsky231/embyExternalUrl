@@ -8,9 +8,10 @@ const ruleRef = commonConfig.ruleRef;
 // 图片缓存策略,包括主页、详情页、图片库的原图,路由器 nginx 请手动调小 conf 中 proxy_cache_path 的 max_size
 // 0: 不同尺寸设备共用一份缓存,先访问先缓存,空间占用最小但存在小屏先缓存大屏看的图片模糊问题
 // 1: 不同尺寸设备分开缓存,空间占用适中,命中率低下,但契合 emby 的图片缩放处理
+//    该模式会将请求参数纳入缓存键,当 Emby/Jellyfin 更新图片 Tag 时可自动刷新
 // 2: 不同尺寸设备共用一份缓存,空间占用最大,移除 emby 的缩放参数,直接原图高清显示
 // 3: 关闭 nginx 缓存功能,已缓存文件不做处理
-const imageCachePolicy = 0;
+const imageCachePolicy = 1;
 
 // 对接 emby 通知管理员设置,目前只发送是否直链成功和屏蔽详情,依赖 emby/jellyfin 的 webhook 配置并勾选外部通知
 const embyNotificationsAdmin = {

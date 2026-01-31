@@ -1,0 +1,4 @@
+emby2Alist/nginx/embyCache/
+*.log
+emby2Alist/nginx/conf.d/constant.js
+emby2Alist/nginx/conf.d/config/constant-mount.js
